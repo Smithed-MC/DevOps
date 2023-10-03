@@ -1,6 +1,6 @@
 echo "Build API"
-docker compose -f dockers/api/docker-compose.yaml build
+ARCH=${ARCH-64} docker compose -f dockers/api/docker-compose.yaml build
 echo "Build Nightly"
-ARCH=${ARCH-64} docker compose -f dockers/nightly-website/docker-compose.yaml build
+docker compose -f dockers/nightly-website/docker-compose.yaml build
 echo "Build Production"
 docker compose -f dockers/prod-website/docker-compose.yaml build
