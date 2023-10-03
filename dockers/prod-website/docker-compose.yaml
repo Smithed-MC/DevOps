@@ -7,4 +7,4 @@ services:
     environment:
       - PORT=8001
     container_name: production-website
-    
+    restart: unless-stopped

@@ -7,4 +7,4 @@ services:
     environment:
       - PORT=8002
     container_name: nightly-website
-    
+    restart: unless-stopped
