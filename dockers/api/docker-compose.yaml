@@ -1,6 +1,9 @@
 services:
   api:
-    build: .
+    build: 
+      context: .
+      args:
+        - ARCH=${ARCH}
     ports:
       - "9001:9001"
     environment:
