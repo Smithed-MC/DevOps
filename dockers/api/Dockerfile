@@ -1,13 +1,14 @@
-FROM node:18.17.1-alpine
+FROM python:3.10.13-alpine
 
 RUN apk update
-RUN apk add git
-RUN apk add python3
-RUN apk --update add gcc libc-dev libffi-dev build-base freetype-dev libpng-dev openblas-dev
-RUN apk add gfortran
-RUN apk add py3-pip
-RUN apk add py3-numpy
+RUN apk add git nodejs gcc
+# RUN apk add python3
+# RUN apk --update add gcc libc-dev libffi-dev build-base freetype-dev libpng-dev openblas-dev
+# RUN apk add gfortran
+# RUN apk add py3-pip
+# RUN apk add py3-numpy
 
+RUN pip3 install --upgrade pip
 RUN pip3 install smithed
 
 COPY . .
