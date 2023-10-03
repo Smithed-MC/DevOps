@@ -21,13 +21,14 @@ RUN apt install -y python3.10 curl git
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python3 get-pip.py
 
-RUN pip install poetry
+RUN pip install poetry streamlit
 
 RUN git clone https://github.com/Smithed-MC/smithed-python code
 WORKDIR /code
 
 RUN poetry install
 
+
 EXPOSE ${PORT}
 
-CMD ["python3", "-m", "streamlit", "app/main.py"]
+CMD ["poetry", "run", "streamlit", "run", "app/main.py", "--browser.serverAddress", "0.0.0.0"]
