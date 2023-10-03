@@ -5,14 +5,13 @@ RUN apk add git
 
 COPY . .
 
-RUN git clone https://github.com/Smithed-MC/UX -b redesign-landing code
+RUN git clone https://github.com/Smithed-MC/UX -b master code
 WORKDIR /code
 
 RUN npm i
 
 WORKDIR /code/platforms/website
 
-ENV PORT 8001
 EXPOSE ${PORT}
 
 CMD ["npm", "run", "serve"]
