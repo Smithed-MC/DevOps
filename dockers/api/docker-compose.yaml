@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    ports:
+      - "9001:9001"
+    environment:
+      - "PORT=9001"
+      - "REDIS=true"
+      - "DOCKER=true"
+    depends_on:
+      - redis
+  redis:
+    image: redislabs/redismod
+    ports:
+      - "6379:6379"
+    
