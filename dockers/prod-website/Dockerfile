@@ -12,6 +12,7 @@ RUN npm i
 
 WORKDIR /code/platforms/website
 
+ENV PORT 8001
 EXPOSE ${PORT}
 
 CMD ["npm", "run", "serve"]
