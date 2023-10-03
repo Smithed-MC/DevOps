@@ -3,9 +3,10 @@ FROM node:18.17.1-alpine
 RUN apk update
 RUN apk add git
 RUN apk add python3
-RUN apk add gcc
+RUN apk --update add gcc libc-dev libffi-dev build-base freetype-dev libpng-dev openblas-dev
 RUN apk add gfortran
 RUN apk add py3-pip
+RUN apk add py3-numpy
 
 RUN pip3 install smithed
 
