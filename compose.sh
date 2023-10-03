@@ -4,3 +4,5 @@ echo "Build Nightly"
 docker compose -f dockers/nightly-website/docker-compose.yaml up --build --detach
 echo "Build Production"
 docker compose -f dockers/prod-website/docker-compose.yaml up --build --detach
+echo "Build Weld"
+docker compose -f dockers/weld/docker-compose.yaml up --build --detach
