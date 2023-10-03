@@ -4,6 +4,7 @@ RUN apk update
 RUN apk add git
 RUN apk add python3
 RUN apk add gcc
+RUN apk add gfortran
 RUN apk add py3-pip
 
 RUN pip3 install smithed
