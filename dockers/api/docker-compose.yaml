@@ -12,9 +12,9 @@ services:
       - "DOCKER=true"
     depends_on:
       - redis
-    container_name: API v2 Service
+    container_name: api-v2-service
   redis:
     image: redislabs/redismod
     ports:
       - "6379:6379"
-    container_name: Redis Instance
+    container_name: redis-instance
