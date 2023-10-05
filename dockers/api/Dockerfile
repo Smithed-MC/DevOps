@@ -53,5 +53,7 @@ COPY ./secret.json /code/platforms/api/
 EXPOSE ${PORT}
 
 ENV ADMIN_CERT=./secret.json
+ENV DOCKER = true
+ENV REDIS = true
 
 CMD ["npm", "run", "api:dev"]
