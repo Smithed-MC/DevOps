@@ -10,8 +10,8 @@ WORKDIR /code
 
 RUN npm i
 
-WORKDIR /code/platforms/website
+WORKDIR /code
 
 EXPOSE ${PORT}
 
-CMD ["npm", "run", "serve"]
+CMD ["npm", "run", "web:serve"]
