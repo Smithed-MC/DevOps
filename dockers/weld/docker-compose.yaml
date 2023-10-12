@@ -11,5 +11,3 @@ services:
       - "DOCKER=true"
     container_name: weld-website
     restart: unless-stopped
-
-    
