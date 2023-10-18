@@ -10,7 +10,7 @@ WORKDIR /code
 
 RUN npm i
 
-WORKDIR /code
+RUN npx turbo run build --filter=website
 
 EXPOSE ${PORT}
 
