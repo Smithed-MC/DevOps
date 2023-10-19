@@ -20,7 +20,7 @@ RUN apt install -y python3.10 curl git
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python3 get-pip.py
-RUN pip install smithed==0.14.2
+RUN pip install smithed==0.14.2 rich
 
 RUN mkdir /usr/local/nvm
 ENV NVM_DIR /usr/local/nvm
