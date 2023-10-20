@@ -1,9 +1,10 @@
 services:
   api:
     build: 
-      context: .
+      context: ./production
+      dockerfile: ./platforms/api/Dockerfile
       args:
-        - ARCH=${ARCH}
+        - ARCH=${ARCH-64}
       
     ports:
       - "9001:9001"
@@ -16,12 +17,14 @@ services:
       # - typesense
     container_name: api-v2-service
     restart: unless-stopped
+
   redis:
     image: redislabs/redismod
     ports:
       - "6379:6379"
     container_name: redis-instance
     restart: always
+
   typesense:
     image: typesense/typesense:0.25.1
     restart: on-failure

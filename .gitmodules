@@ -1,0 +1,8 @@
+[submodule "production"]
+	path = production
+	url = https://github.com/Smithed-MC/UX
+	branch = production
+[submodule "main"]
+	path = main
+	url = https://github.com/Smithed-MC/UX
+	branch = main
