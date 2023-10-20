@@ -22,12 +22,14 @@ services:
       - "6379:6379"
     container_name: redis-instance
     restart: always
-  # typesense:
-  #   image: typesense/typesense:0.25.1
-  #   restart: on-failure
-  #   ports:
-  #     - "8108:8108"
-  #   volumes:
-  #     - ./typesense-data:/data
-  #   command: '--data-dir /data --api-key=xyz'
+  typesense:
+    image: typesense/typesense:0.25.1
+    restart: on-failure
+    env_file:
+      - .env
+    ports:
+      - "8108:8108"
+    volumes:
+      - ./typesense-data:/data
+    command: '--data-dir /data'
     
