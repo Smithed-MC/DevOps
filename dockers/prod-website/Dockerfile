@@ -5,7 +5,7 @@ RUN apk add git
 
 COPY . .
 
-RUN git clone https://github.com/Smithed-MC/UX -b master code
+RUN git clone https://github.com/Smithed-MC/UX -b production code
 WORKDIR /code
 
 RUN npm i

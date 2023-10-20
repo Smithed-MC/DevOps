@@ -5,7 +5,7 @@ RUN apk add git
 
 COPY . .
 
-RUN git clone https://github.com/Smithed-MC/UX -b redesign-landing code
+RUN git clone https://github.com/Smithed-MC/UX -b main code
 WORKDIR /code
 
 RUN npm i
