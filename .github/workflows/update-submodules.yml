@@ -4,8 +4,6 @@ name: Update Submodules
 on:
   repository_dispatch:
     types: update
-  push:
-    branches: [ "main" ]
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -21,19 +19,3 @@ jobs:
           git config --global user.email "noreply@github.com"
           git commit -am "deploy: ${{github.event.client_payload.module}} - ${{github.event.client_payload.sha}}"
           git push
-      - name: Create SSH key
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_PRIVATE_KEY" > ../private.key
-          sudo chmod 600 ../private.key
-          echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-        shell: bash
-        env:
-          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
-          SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
-          SSH_KEY_PATH: ${{ github.workspace }}/../private.key
-      - name: Deploy Dockers
-        env:
-          SSH_KEY_PATH: ${{ github.workspace }}/../private.key
-        run: ssh -I $SSH_KEY_PATH "${{ secrets.DEPLOYMENT_COMMAND }}"
-
