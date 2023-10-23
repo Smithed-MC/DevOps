@@ -20,7 +20,7 @@ jobs:
           submodules: recursive
       - name: Update module
         run: |
-          git submodule update --remote --rebase -f "${{github.event.client_payload.module || github.event.inputs.branch}}"
+          git submodule update --init --remote --recursive
           git config --global user.name "GitHub Action"
           git config --global user.email "noreply@github.com"
           git commit -m "deploy: ${{github.event.client_payload.module || github.event.inputs.branch}} - ${{github.event.client_payload.sha || 'manual deploy'}}"
