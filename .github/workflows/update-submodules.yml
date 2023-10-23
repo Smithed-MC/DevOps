@@ -4,6 +4,12 @@ name: Update Submodules
 on:
   repository_dispatch:
     types: update
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Define branch name'     
+        required: true
+        default: 'main'
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -14,8 +20,8 @@ jobs:
           submodules: recursive
       - name: Update module
         run: |
-          git submodule update "${{github.event.client_payload.module}}"
+          git submodule update --remote --merge "${{github.event.client_payload.module || github.event.inputs.branch}}"
           git config --global user.name "GitHub Action"
           git config --global user.email "noreply@github.com"
-          git commit -am "deploy: ${{github.event.client_payload.module}} - ${{github.event.client_payload.sha}}"
+          git commit -m "deploy: ${{github.event.client_payload.module}} - ${{github.event.client_payload.sha}}"
           git push
