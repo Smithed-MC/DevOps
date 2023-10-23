@@ -34,4 +34,4 @@ jobs:
       - name: Deploy Dockers
         env:
           SSH_KEY_PATH: ${{ github.workspace }}/../private.key
-        run: ssh -i $SSH_KEY_PATH ${{ secrets.SSH_SERVER }} "cd /var/Dockers && git pull"
+        run: ssh -i $SSH_KEY_PATH ${{ secrets.SSH_SERVER }} "git config --global --add safe.directory /var/Dockers && cd /var/Dockers && git pull"
