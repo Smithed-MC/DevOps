@@ -34,4 +34,4 @@ jobs:
       - name: Deploy Dockers
         env:
           SSH_KEY_PATH: ${{ github.workspace }}/../private.key
-        run: ssh -i $SSH_KEY_PATH ${{ secrets.SSH_SERVER }} "ls"
+        run: ssh -i $SSH_KEY_PATH ${{ secrets.SSH_SERVER }} "cd /var/Dockers && ls"
