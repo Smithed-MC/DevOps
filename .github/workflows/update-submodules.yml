@@ -23,7 +23,7 @@ jobs:
         env:
           BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
         run: |
-          cd $BRANCH && git reset --hard && git pull --rebase -f origin $BRANCH
+          cd $BRANCH && git reset --hard && git pull --ff -f origin $BRANCH
       - name: Commit update
         env:
           BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
