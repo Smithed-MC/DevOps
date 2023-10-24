@@ -23,7 +23,7 @@ jobs:
         env:
           BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
         run: |
-          cd $BRANCH && git reset --hard && git pull --ff -f --allow-unrelated-histories origin $BRANCH
+          cd $BRANCH && git checkout $BRANCH && git pull
       - name: Commit update
         env:
           BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
