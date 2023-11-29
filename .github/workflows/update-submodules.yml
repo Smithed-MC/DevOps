@@ -16,14 +16,13 @@ jobs:
     steps:
       - name: Clone
         run: |
-          ls && git clone https://github.com/${{ github.repository }} DevOps
+          git clone --recurse-submodules https://github.com/${{ github.repository }} DevOps
       # Update references
       - name: Git Sumbodule Update
         env:
           BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
         run: |
           cd DevOps
-          git pull --recurse-submodules
           cd $BRANCH
           git pull
       - name: Commit update
