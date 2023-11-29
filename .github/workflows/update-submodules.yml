@@ -14,16 +14,15 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
-        with:
-          token: ${{ secrets.PAT }}
-          submodules: recursive
+      - name: Clone
+        run: |
+          git clone https://github.com/${{ git.repository }}
       # Update references
       - name: Git Sumbodule Update
         env:
           BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
         run: |
-          git pull --recurse-submodules && cd $BRANCH && git pull
+          cd $BRANCH && git pull
       - name: Commit update
         env:
           BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
