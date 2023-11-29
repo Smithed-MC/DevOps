@@ -22,8 +22,7 @@ jobs:
         env:
           BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
         run: |
-          cd DevOps
-          cd $BRANCH
+          cd DevOps/$BRANCH
           git pull
       - name: Commit update
         env:
