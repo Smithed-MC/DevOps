@@ -23,7 +23,7 @@ jobs:
           BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
         run: |
           cd DevOps/$BRANCH
-          git pull
+          git pull origin $BRANCH
       - name: Commit update
         env:
           BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
