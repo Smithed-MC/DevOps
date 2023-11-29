@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Clone
         run: |
-          git clone https://github.com/${{ git.repository }}
+          git clone https://github.com/${{ github.repository }}
       # Update references
       - name: Git Sumbodule Update
         env:
