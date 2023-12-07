@@ -33,3 +33,9 @@ jobs:
           git config --global user.email 'bot@noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git commit -am "deploy: $BRANCH - Auto updated submodule references" && git push || echo "No changes to commit"
+      - name: Deploy
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.PAT }}
+          repository: Smithed-MC/DevOps
+          event-type: deploy
