@@ -1,0 +1,14 @@
+services:
+  weld:
+    build: 
+      context: ./weld
+      dockerfile: ./Dockerfile
+      args:
+        - ARCH=${ARCH-64}
+    ports:
+      - "8501:8501"
+    environment:
+      - "PORT=8501"
+      - "DOCKER=true"
+    container_name: weld-website
+    restart: unless-stopped

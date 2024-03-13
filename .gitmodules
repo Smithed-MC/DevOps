@@ -6,3 +6,7 @@
 	path = main
 	url = https://github.com/Smithed-MC/UX
 	branch = main
+[submodule "weld"]
+	path = weld
+	url = https://github.com/Smithed-MC/smithed-python
+	branch = main
