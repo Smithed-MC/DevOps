@@ -7,9 +7,18 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-        description: 'Define branch name'     
+        description: 'Define branch name (use production for production module)'     
         required: true
         default: 'main'
+      module:
+        description: 'Define module name'
+        required: true
+        default: 'main'
+        type: 'choice'
+        options:
+         - main
+         - production
+         - weld
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -20,19 +29,20 @@ jobs:
       # Update references
       - name: Git Sumbodule Update
         env:
-          BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
+          BRANCH: ${{github.event.client_payload.branch || github.event.inputs.branch}}
+          MODULE: ${{github.event.client_payload.module || github.event.inputs.module}}
         run: |
-          cd DevOps/$BRANCH
+          cd DevOps/$MODULE
           git pull origin $BRANCH
       - name: Commit update
         env:
-          BRANCH: ${{github.event.client_payload.module || github.event.inputs.branch}}
+          BRANCH: ${{github.event.client_payload.module || github.event.inputs.module}}
         run: |
           cd DevOps
           git config --global user.name 'Git bot'
           git config --global user.email 'bot@noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git commit -am "deploy: $BRANCH - Auto updated submodule references" && git push || echo "No changes to commit"
+          git commit -am "deploy: $MODULE - Auto updated submodule references" && git push || echo "No changes to commit"
       - name: Deploy
         uses: peter-evans/repository-dispatch@v2
         with:
